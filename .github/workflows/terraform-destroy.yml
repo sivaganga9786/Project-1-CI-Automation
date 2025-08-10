@@ -3,7 +3,7 @@ name: Terraform CI
 on:
   push:
     branches:
-      - feature/terraform-ci
+      - main
 
 jobs:
   terraform:
@@ -34,38 +34,11 @@ jobs:
               AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
               region: us-east-1
 
-
-      - name: Terraform Init
+      - name: Terraform destory
         run: |
             cd terraform-Modules/Dev
-            terraform init
+            terraform destroy
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
             region: us-east-1
-
-      - name: Terraform Plan
-        run: |
-              cd terraform-Modules/Dev
-              terraform plan \
-                -var="access_key=${{ secrets.ACCESS_KEY }}" \
-                -var="secret_key=${{ secrets.SECRET_KEY }}" \
-                -var="region=us-east-1"
-        env:
-              AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-              AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-              region: us-east-1
-    
-      - name: Terraform Apply
-        run: |
-              cd terraform-Modules/Dev
-              terraform apply -auto-approve \
-                -var="access_key=${{ secrets.ACCESS_KEY }}" \
-                -var="secret_key=${{ secrets.SECRET_KEY }}" \
-                -var="region=us-east-1"
-        env:
-              AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-              AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-              region: us-east-1
-              
-            
