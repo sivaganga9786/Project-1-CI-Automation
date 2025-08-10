@@ -16,6 +16,7 @@ module "ec2" {
   instance_name = "ecom-dev-runner"
   ami           = "ami-084568db4383264d4" # choose correct region AMI with SSM support
   instance_type = "t3.micro"
+  key_name       = var.key_name
   vpc_id        = module.vpc.vpc_id
   subnet_id     = module.vpc.private_subnet_ids[0] # place in private subnet
   tags = {
