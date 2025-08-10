@@ -1,4 +1,4 @@
-name: Terraform CI
+name: Terraform destroy
 
 on:
   push:
@@ -34,11 +34,20 @@ jobs:
               AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
               region: us-east-1
 
-      - name: Terraform destory
+      - name: Terraform Init
         run: |
             cd terraform-Modules/Dev
-            terraform destroy
+            terraform init -reconfigure
         env:
             AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-            region: us-east-1
+            AWS_REGION: us-east-1
+
+      - name: Terraform Destroy
+        run: |
+            cd terraform-Modules/Dev
+            terraform destroy -auto-approve
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+            AWS_REGION: us-east-1
