@@ -1,54 +1,43 @@
-name: Terraform destroy
+name: Terraform Destroy
 
 on:
-  push:
-    branches:
-      - terraform-destroy
+  workflow_dispatch:   # This lets you manually trigger the destroy from GitHub UI
 
 jobs:
-  terraform:
+  terraform-destroy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: Check AWS Authentication
-        run: |
-          aws sts get-caller-identity
+      - name: AWS Authentication Check
+        run: aws sts get-caller-identity
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-            region: us-east-1
-
-      - name: Debug AWS Environment Variables
-        run: |
-              echo "AWS Access Key: $AWS_ACCESS_KEY_ID"
-              echo "AWS Secret Key: $AWS_SECRET_ACCESS_KEY"
-              echo "AWS Region: $region"
-        env:
-              AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-              AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-              region: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          AWS_REGION: us-east-1
 
       - name: Terraform Init
         run: |
-            cd terraform-Modules/Dev
-            terraform init -reconfigure
+          cd terraform-Modules/Dev
+          terraform init -input=false -reconfigure
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-            AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          AWS_REGION: us-east-1
 
       - name: Terraform Destroy
         run: |
-            cd terraform-Modules/Dev
-            terraform destroy -auto-approve
+          cd terraform-Modules/Dev
+          terraform destroy -auto-approve \
+            -var="access_key=${{ secrets.ACCESS_KEY }}" \
+            -var="secret_key=${{ secrets.SECRET_KEY }}" \
+            -var="region=us-east-1"
         env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-            AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          AWS_REGION: us-east-1
 
