@@ -3,7 +3,7 @@ name: Terraform CI
 on:
   push:
     branches:
-      - feature/terraform-ci
+      - main
 
 jobs:
   terraform:

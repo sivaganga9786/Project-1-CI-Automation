@@ -3,7 +3,7 @@ name: Terraform destroy
 on:
   push:
     branches:
-      - main
+      - terraform-destroy
 
 jobs:
   terraform:
@@ -52,4 +52,3 @@ jobs:
             AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
             AWS_REGION: us-east-1
 
-            
