@@ -10,8 +10,6 @@ module "vpc" {
   }
 }
 
-
-
 module "ec2" {
   source        = "git::https://github.com/sivaganga9786/Terraform-foundation.git//terraform-resources/EC2"
   name_prefix   = "ecom-dev"
