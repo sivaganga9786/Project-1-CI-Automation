@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: quoteservice
-          image: sivaganesh07/quote:17305641621
+          image: sivaganesh07/quote:17305645107
           imagePullPolicy: IfNotPresent
           ports:
             
