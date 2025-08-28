@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: recommendationservice
-          image: sivaganesh07/recommendation:17305602785
+          image: sivaganesh07/recommendation:17305605599
           imagePullPolicy: IfNotPresent
           ports:
             
