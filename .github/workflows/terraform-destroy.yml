@@ -83,3 +83,19 @@ jobs:
           file: src/checkout/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/checkout:${{github.run_id}} 
+
+      - name: Docker email Push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/email/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/email:${{github.run_id}}
+
+      - name: Docker flagd-ui Push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/flagd-ui/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/flagd-ui:${{github.run_id}}
