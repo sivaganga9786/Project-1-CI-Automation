@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: cartservice
-          image: sivaganesh07/cart:17305600255
+          image: sivaganesh07/cart:17305602785
           imagePullPolicy: IfNotPresent
           ports:
             
@@ -71,6 +71,6 @@ spec:
           - -c
           - until nc -z -v -w30 opentelemetry-demo-valkey 6379; do echo waiting
             for valkey; sleep 2; done;
-          image: sivaganesh07/cart:17305600255
+          image: sivaganesh07/cart:17305602785
           name: wait-for-valkey
       volumes:
