@@ -45,7 +45,7 @@ jobs:
           with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_TOKEN }}
-            
+
         - name: Docker product-catalog Push
           uses: docker/build-push-action@v6
           with:
@@ -173,3 +173,42 @@ jobs:
             file: src/recommendation/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/recommendation:${{github.run_id}}
+
+    updatek8s:
+            runs-on: ubuntu-latest
+
+            needs: docker
+
+            steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+              with:
+                token: ${{ secrets.TOKEN }}
+
+            - name: Update tag in kubernetes deployment manifest
+              run: | 
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{github.run_id}}|" kubernetes/productcatalog/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/accounting:${{github.run_id}}|" kubernetes/accounting/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/ad:${{github.run_id}}|" kubernetes/ad/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/cart:${{github.run_id}}|" kubernetes/cart/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/checkout:${{github.run_id}}|" kubernetes/checkout/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/email:${{github.run_id}}|" kubernetes/email/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/flagd-ui:${{github.run_id}}|" kubernetes/flagd-ui/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/fraud-detection:${{github.run_id}}|" kubernetes/fraud-detection/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/frontend:${{github.run_id}}|" kubernetes/frontend/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/frontend-proxy:${{github.run_id}}|" kubernetes/frontend-proxy/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/image-provider:${{github.run_id}}|" kubernetes/image-provider/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/load-generator:${{github.run_id}}|" kubernetes/load-generator/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/payment:${{github.run_id}}|" kubernetes/payment/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/quote:${{github.run_id}}|" kubernetes/quote/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/shipping:${{github.run_id}}|" kubernetes/shipping/deploy.yaml
+                  sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/recommendation:${{github.run_id}}|" kubernetes/recommendation/deploy.yaml
+                  
+            
+            - name: Commit and push changes
+              run: |
+                git config --global user.email "veeraganesh6@gmail.com"
+                git config --global user.name "veera ganesh"
+                git add kubernetes/*
+                git commit -m "[CI]: Update images tag"
+                git push origin HEAD:main -f
