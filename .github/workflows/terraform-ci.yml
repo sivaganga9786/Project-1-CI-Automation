@@ -57,7 +57,7 @@ jobs:
         - name: Docker accounting Push
           uses: docker/build-push-action@v6
           with:
-            context: src/accounting
+            context: .
             file: src/accounting/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/accounting:${{github.run_id}}
