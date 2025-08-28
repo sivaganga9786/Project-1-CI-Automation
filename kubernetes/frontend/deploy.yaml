@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: frontend
-          image: sivaganesh07/frontend:17305598130
+          image: sivaganesh07/frontend:17305600255
           imagePullPolicy: IfNotPresent
           ports:
             
