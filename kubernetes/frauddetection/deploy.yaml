@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: frauddetectionservice
-          image: sivaganesh07/fraud-detection:17305592636
+          image: sivaganesh07/fraud-detection:17305595460
           imagePullPolicy: IfNotPresent
           env:
             - name: OTEL_SERVICE_NAME
@@ -63,6 +63,6 @@ spec:
           - -c
           - until nc -z -v -w30 opentelemetry-demo-kafka 9092; do echo waiting
             for kafka; sleep 2; done;
-          image: sivaganesh07/fraud-detection:17305592636
+          image: sivaganesh07/fraud-detection:17305595460
           name: wait-for-kafka
       volumes:
