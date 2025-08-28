@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: flagd
-          image: sivaganesh07/flagd-ui:17305629949
+          image: sivaganesh07/flagd-ui:17305632528
           imagePullPolicy: IfNotPresent
           command:
             - /flagd-build
@@ -65,7 +65,7 @@ spec:
             - name: config-rw
               mountPath: /etc/flagd
         - name: flagdui
-          image: sivaganesh07/flagd-ui:17305629949
+          image: sivaganesh07/flagd-ui:17305632528
           imagePullPolicy: IfNotPresent
           ports:
             
@@ -98,7 +98,7 @@ spec:
           - sh
           - -c
           - cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json
-          image: sivaganesh07/flagd-ui:17305629949
+          image: sivaganesh07/flagd-ui:17305632528
           name: init-config
           volumeMounts:
           - mountPath: /config-ro

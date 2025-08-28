@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: imageprovider
-          image: sivaganesh07/image-provider:17305629949
+          image: sivaganesh07/image-provider:17305632528
           imagePullPolicy: IfNotPresent
           ports:
             
