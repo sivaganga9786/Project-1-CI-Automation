@@ -21,7 +21,7 @@ RUN apk update && apk add git cmake make g++ grpc-dev protobuf-dev linux-headers
 
 ARG OPENTELEMETRY_CPP_VERSION=v1.22.0
 
-RUN git clone --depth 1 --branch v${OPENTELEMETRY_CPP_VERSION} https://github.com/open-telemetry/opentelemetry-cpp \
+RUN git clone --depth 1 --branch ${OPENTELEMETRY_CPP_VERSION} https://github.com/open-telemetry/opentelemetry-cpp \
     && cd opentelemetry-cpp/ \
     && mkdir build \
     && cd build \
