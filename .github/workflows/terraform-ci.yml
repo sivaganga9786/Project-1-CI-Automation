@@ -81,7 +81,7 @@ jobs:
         - name: Docker checkout Push
           uses: docker/build-push-action@v6
           with:
-            context: src/checkout
+            context: .
             file: src/checkout/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/checkout:${{github.run_id}} 
@@ -90,7 +90,7 @@ jobs:
         - name: Docker currency Push
           uses: docker/build-push-action@v6
           with:
-            context: src/currency
+            context: .
             file: src/currency/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/currency:${{github.run_id}}
@@ -98,7 +98,7 @@ jobs:
         - name: Docker email Push
           uses: docker/build-push-action@v6
           with:
-            context: src/email
+            context: .
             file: src/email/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/email:${{github.run_id}}
@@ -106,7 +106,7 @@ jobs:
         - name: Docker flagd-ui Push
           uses: docker/build-push-action@v6
           with:
-            context: src/flagd-ui
+            context: .
             file: src/flagd-ui/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/flagd-ui:${{github.run_id}}
@@ -114,7 +114,7 @@ jobs:
         - name: Docker fraud-detection Push
           uses: docker/build-push-action@v6
           with:
-            context: src/fraud-detection
+            context: .
             file: src/fraud-detection/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/fraud-detection:${{github.run_id}}
@@ -122,7 +122,7 @@ jobs:
         - name: Docker frontend Push
           uses: docker/build-push-action@v6
           with:
-            context: src/frontend
+            context: .
             file: src/frontend/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/frontend:${{github.run_id}}
@@ -130,7 +130,7 @@ jobs:
         - name: Docker frontend-proxy Push
           uses: docker/build-push-action@v6
           with:
-            context: src/frontend-proxy
+            context: .
             file: src/frontend-proxy/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/frontend-proxy:${{github.run_id}}
@@ -138,7 +138,7 @@ jobs:
         - name: Docker image-provider Push
           uses: docker/build-push-action@v6
           with:
-            context: src/image-provider
+            context: .
             file: src/image-provider/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/image-provider:${{github.run_id}}
@@ -146,7 +146,7 @@ jobs:
         - name: Docker kafka Push
           uses: docker/build-push-action@v6
           with:
-            context: src/kafka
+            context: .
             file: src/kafka/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/kafka:${{github.run_id}}
@@ -154,7 +154,7 @@ jobs:
         - name: Docker load-generator Push
           uses: docker/build-push-action@v6
           with:
-            context: src/load-generator
+            context: .
             file: src/load-generator/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/load-generator:${{github.run_id}}
@@ -162,7 +162,7 @@ jobs:
         - name: Docker payment Push
           uses: docker/build-push-action@v6
           with:
-            context: src/payment
+            context: .
             file: src/payment/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/payment:${{github.run_id}}
@@ -170,7 +170,7 @@ jobs:
         - name: Docker product-catalog Push
           uses: docker/build-push-action@v6
           with:
-            context: src/product-catalog
+            context: .
             file: src/product-catalog/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/product-catalog:${{github.run_id}}
@@ -178,7 +178,7 @@ jobs:
         - name: Docker quote Push
           uses: docker/build-push-action@v6
           with:
-            context: src/quote
+            context: .
             file: src/quote/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/quote:${{github.run_id}}
@@ -186,7 +186,7 @@ jobs:
         - name: Docker shipping Push
           uses: docker/build-push-action@v6
           with:
-            context: src/shipping
+            context: .
             file: src/shipping/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/shipping:${{github.run_id}}
@@ -194,7 +194,7 @@ jobs:
         - name: Docker recommendation Push
           uses: docker/build-push-action@v6
           with:
-            context: src/recommendation
+            context: .
             file: src/recommendation/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/recommendation:${{github.run_id}}
