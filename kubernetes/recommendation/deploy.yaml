@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: recommendationservice
-          image: 'ghcr.io/open-telemetry/demo:1.12.0-recommendationservice'
+          image: sivaganesh07/recommendation:17305505682
           imagePullPolicy: IfNotPresent
           ports:
             
