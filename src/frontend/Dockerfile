@@ -14,7 +14,7 @@ FROM node:20-alpine AS builder
 RUN apk add --no-cache libc6-compat protobuf-dev protoc
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY ./src/ad/pb/demo.proto ./pb
+COPY ./src/ad/pb/ ./pb/
 COPY ./src/frontend .
 
 RUN npm run grpc:generate

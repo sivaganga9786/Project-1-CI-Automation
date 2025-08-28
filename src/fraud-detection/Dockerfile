@@ -7,7 +7,7 @@ FROM --platform=${BUILDPLATFORM} gradle:8-jdk17 AS builder
 WORKDIR /usr/src/app/
 
 COPY ./src/fraud-detection/ ./
-COPY ./src/ad/pb/demo.proto ./src/main/proto/
+COPY ./src/ad/pb/ ./src/main/proto/
 RUN gradle shadowJar
 
 # -----------------------------------------------------------------------------

@@ -73,7 +73,7 @@ jobs:
         - name: Docker cart  Push
           uses: docker/build-push-action@v6
           with:
-            context: src/cart/src
+            context: .
             file: src/cart/src/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/cart:${{github.run_id}} 

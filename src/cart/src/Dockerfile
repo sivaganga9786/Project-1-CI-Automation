@@ -21,7 +21,7 @@ ARG TARGETARCH
 WORKDIR /usr/src/app/
 
 COPY ./src/cart/ ./
-COPY ./src/ad/pb/demo.proto/ ./pb/
+COPY ./src/ad/pb/ ./pb/
 
 RUN dotnet restore ./src/cart.csproj -r linux-musl-$TARGETARCH
 
