@@ -47,45 +47,10 @@ jobs:
             password: ${{ secrets.DOCKER_TOKEN }}
 
 
-
-
-
-        - name: Docker load-generator Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/load-generator/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/load-generator:${{github.run_id}}
-
-        - name: Docker payment Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/payment/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/payment:${{github.run_id}}
-
-        - name: Docker quote Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/quote/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/quote:${{github.run_id}}
-  
-        - name: Docker shipping Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/shipping/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/shipping:${{github.run_id}}
-
         - name: Docker recommendation Push
           uses: docker/build-push-action@v6
           with:
-            context: .
+            context: src/recommendation
             file: src/recommendation/Dockerfile
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/recommendation:${{github.run_id}}
