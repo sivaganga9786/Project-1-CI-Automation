@@ -30,7 +30,7 @@ RUN git clone --depth 1 --branch v${OPENTELEMETRY_CPP_VERSION} https://github.co
     && make -j$(nproc || sysctl -n hw.ncpu || echo 1) install && cd ../..
 
 COPY ./src/currency /currency
-COPY ./pb/demo.proto /currency/proto/demo.proto
+COPY ./src/ad/pb/demo.proto /currency/proto/demo.proto
 
 RUN cd /currency \
     && mkdir -p build && cd build \

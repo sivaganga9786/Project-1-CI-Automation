@@ -20,7 +20,7 @@ ENV NODE_ENV=production
 
 COPY --chown=node:node --from=build /usr/src/app/node_modules/ ./node_modules/
 COPY ./src/payment/ ./
-COPY ./pb/demo.proto ./
+COPY ./src/ad/pb/demo.proto ./
 
 EXPOSE ${PAYMENT_PORT}
 ENTRYPOINT [ "npm", "run", "start" ]
