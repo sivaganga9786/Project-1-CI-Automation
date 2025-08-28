@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: paymentservice
-          image: sivaganesh07/payment:17305612704
+          image: sivaganesh07/payment:17305616380
           imagePullPolicy: IfNotPresent
           ports:
             
