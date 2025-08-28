@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: emailservice
-          image: sivaganesh07/email:17305608367
+          image: sivaganesh07/email:17305610489
           imagePullPolicy: IfNotPresent
           ports:
             
