@@ -14,7 +14,7 @@ RUN gradle shadowJar
 
 FROM gcr.io/distroless/java17-debian11
 
-ARG OTEL_JAVA_AGENT_VERSION=2.12.0
+ARG OTEL_JAVA_AGENT_VERSION=2.19.0
 WORKDIR /usr/src/app/
 
 COPY --from=builder /usr/src/app/build/libs/fraud-detection-1.0-all.jar ./

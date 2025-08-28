@@ -46,45 +46,9 @@ jobs:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_TOKEN }}
 
-        - name: Docker fraud-detection Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/fraud-detection/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/fraud-detection:${{github.run_id}}
 
-        - name: Docker frontend Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/frontend/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/frontend:${{github.run_id}}
 
-        - name: Docker frontend-proxy Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/frontend-proxy/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/frontend-proxy:${{github.run_id}}
 
-        - name: Docker image-provider Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/image-provider/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/image-provider:${{github.run_id}}
-
-        - name: Docker kafka Push
-          uses: docker/build-push-action@v6
-          with:
-            context: .
-            file: src/kafka/Dockerfile
-            push: true
-            tags: ${{ secrets.DOCKER_USERNAME }}/kafka:${{github.run_id}}
 
         - name: Docker load-generator Push
           uses: docker/build-push-action@v6
