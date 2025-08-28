@@ -31,7 +31,7 @@ spec:
       serviceAccountName: opentelemetry-demo
       containers:
         - name: accountingservice
-          image: sivaganesh07/accounting:17305505682
+          image: sivaganesh07/accounting:17305650893
           imagePullPolicy: IfNotPresent
           env:
             - name: OTEL_SERVICE_NAME
@@ -59,6 +59,6 @@ spec:
           - -c
           - until nc -z -v -w30 opentelemetry-demo-kafka 9092; do echo waiting
             for kafka; sleep 2; done;
-          image: sivaganesh07/accounting:17305505682
+          image: sivaganesh07/accounting:17305650893
           name: wait-for-kafka
       volumes:
